@@ -25,9 +25,9 @@ import com.soufflet.mobile.watchme.adapters.HttpRequestManager;
 import com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.MovieDbApi;
 import com.soufflet.mobile.watchme.detailpage.MovieOverviewActivity;
 import com.soufflet.mobile.watchme.types.Movie;
-import com.soufflet.mobile.watchme.types.MovieMapper;
 
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.widget.Toast.LENGTH_SHORT;
@@ -36,7 +36,7 @@ import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.
 import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.MovieDbApi.TOP_RATED_MOVIES;
 import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.getMovieDbEndpoint;
 import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbMovieResponseParser.parseMovieDbResponse;
-import static com.soufflet.mobile.watchme.types.MovieMapper.MOVIE_JSON_EXTRA;
+import static com.soufflet.mobile.watchme.types.Movie.MOVIE_EXTRA_PARCEL;
 
 /**
  * - Fetch Popular and Top Rated movies.
@@ -105,7 +105,7 @@ public class MainActivityFragment extends Fragment {
 
     private void gotoDetailPage(Movie movie) {
         Intent intent = new Intent(getActivity(), MovieOverviewActivity.class);
-        intent.putExtra(MOVIE_JSON_EXTRA, MovieMapper.toJson(movie));
+        intent.putExtra(MOVIE_EXTRA_PARCEL, Parcels.wrap(movie));
 
         startActivity(intent);
     }

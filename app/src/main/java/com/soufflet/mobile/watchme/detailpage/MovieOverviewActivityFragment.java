@@ -11,15 +11,16 @@ import android.widget.TextView;
 
 import com.soufflet.mobile.watchme.R;
 import com.soufflet.mobile.watchme.types.Movie;
-import com.soufflet.mobile.watchme.types.MovieMapper;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.MovieDbImageSize.WIDTH_342;
 import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.createMovieDbImageUriFor;
-import static com.soufflet.mobile.watchme.types.MovieMapper.MOVIE_JSON_EXTRA;
+import static com.soufflet.mobile.watchme.types.Movie.MOVIE_EXTRA_PARCEL;
 
 /**
  * - Display detailed information about a selected movie.
@@ -36,8 +37,8 @@ public class MovieOverviewActivityFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
 
-        if (intent != null && intent.hasExtra(MOVIE_JSON_EXTRA)) {
-            Movie selectedMovie = MovieMapper.parseJSON(intent.getStringExtra(MOVIE_JSON_EXTRA));
+        if (intent != null && intent.hasExtra(MOVIE_EXTRA_PARCEL)) {
+            Movie selectedMovie = Parcels.unwrap(intent.getParcelableExtra(MOVIE_EXTRA_PARCEL));
 
             ImageView imageView = (ImageView) rootView.findViewById(R.id.movie_image);
             TextView titleTextView = (TextView) rootView.findViewById(R.id.movie_title);

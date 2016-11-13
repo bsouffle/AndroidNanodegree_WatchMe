@@ -1,18 +1,25 @@
 package com.soufflet.mobile.watchme.types;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 
+@Parcel
 public class Movie {
 
-    private final String title;
-    private final String imagePath;
-    private final String overview;
-    private final double rating;
-    private final Date releaseDate;
+    public static final String MOVIE_EXTRA_PARCEL = "movie_parcel";
+
+    private String title;
+    private String imagePath;
+    private String overview;
+    private double rating;
+    private Date releaseDate;
+
+    public Movie() {}
 
     public Movie(String title, String imagePath, String overview, double rating, Date releaseDate) {
         this.title = title;
