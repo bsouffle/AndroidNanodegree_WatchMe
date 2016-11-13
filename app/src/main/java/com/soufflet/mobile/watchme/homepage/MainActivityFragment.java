@@ -144,7 +144,7 @@ public class MainActivityFragment extends Fragment {
         SharedPreferences sharedPref = getActivity().getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.saved_sort_pref), api.name());
-        editor.commit();
+        editor.apply();
     }
 
     private MovieDbApi getMovieDbApiFromPreferences() {

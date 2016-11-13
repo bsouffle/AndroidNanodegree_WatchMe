@@ -11,8 +11,6 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.createMovieDbImageUriFor;
-
 public final class MovieDbMovieResponseParser {
 
     private static final String LOG_TAG = MovieDbMovieResponseParser.class.getSimpleName();

@@ -1,23 +1,24 @@
 package com.soufflet.mobile.watchme.homepage;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory;
 import com.soufflet.mobile.watchme.types.Movie;
 import com.squareup.picasso.Picasso;
 
 import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.MovieDbImageSize.WIDTH_185;
 import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.createMovieDbImageUriFor;
 
-public class MovieGridAdapter extends ArrayAdapter<Movie> {
-    private Context context;
-    private LayoutInflater inflater;
-    private int imageViewResourceId;
+class MovieGridAdapter extends ArrayAdapter<Movie> {
+
+    private final Context context;
+    private final LayoutInflater inflater;
+    private final int imageViewResourceId;
 
     public MovieGridAdapter(Context context, int resourceId, int imageViewResourceId) {
         super(context, resourceId);
@@ -27,8 +28,9 @@ public class MovieGridAdapter extends ArrayAdapter<Movie> {
         this.imageViewResourceId = imageViewResourceId;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (null == convertView) {
             convertView = inflater.inflate(imageViewResourceId, parent, false);
         }

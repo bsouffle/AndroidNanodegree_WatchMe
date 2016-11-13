@@ -20,14 +20,14 @@ public final class MovieDbApiUrlFactory {
         WIDTH_185("w185"),
         WIDTH_342("w342");
 
-        private String width;
+        private final String width;
         MovieDbImageSize(String width) {
             this.width = width;
         }
     }
 
     /**
-     * @see https://www.themoviedb.org/
+     * @see <a href="https://www.themoviedb.org">https://www.themoviedb.org</a>
      */
     private static final String API_KEY = "[YOUR_API_KEY]";
 

@@ -9,12 +9,11 @@ import com.android.volley.toolbox.Volley;
 public final class HttpRequestManager {
 
     private static HttpRequestManager INSTANCE;
-    private RequestQueue requestQueue;
-    private Context context;
+
+    private final RequestQueue requestQueue;
 
     private HttpRequestManager(Context context) {
-        this.context = context;
-        this.requestQueue = getRequestQueue();
+        this.requestQueue = Volley.newRequestQueue(context.getApplicationContext());
     }
 
     public static synchronized HttpRequestManager getInstance(Context context) {
@@ -25,15 +24,7 @@ public final class HttpRequestManager {
         return INSTANCE;
     }
 
-    public RequestQueue getRequestQueue() {
-        if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(context.getApplicationContext());
-        }
-
-        return requestQueue;
-    }
-
     public <T> void addToRequestQueue(Request<T> req) {
-        getRequestQueue().add(req);
+        requestQueue.add(req);
     }
 }

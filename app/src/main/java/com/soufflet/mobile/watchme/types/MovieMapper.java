@@ -5,7 +5,8 @@ import com.google.gson.GsonBuilder;
 
 public final class MovieMapper {
 
-    public static String MOVIE_JSON_EXTRA = "movie_json";
+    public static final String MOVIE_JSON_EXTRA = "movie_json";
+
     private static final Gson gson = new GsonBuilder().create();
 
     private MovieMapper() {}
