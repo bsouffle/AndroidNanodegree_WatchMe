@@ -7,8 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+import com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory;
 import com.soufflet.mobile.watchme.types.Movie;
 import com.squareup.picasso.Picasso;
+
+import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.MovieDbImageSize.WIDTH_185;
+import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.createMovieDbImageUriFor;
 
 public class MovieGridAdapter extends ArrayAdapter<Movie> {
     private Context context;
@@ -30,7 +34,7 @@ public class MovieGridAdapter extends ArrayAdapter<Movie> {
         }
 
         Picasso.with(context)
-                .load(getItem(position).getImageUri())
+                .load(createMovieDbImageUriFor(getItem(position).getImagePath(), WIDTH_185))
                 .fit()
                 .into((ImageView) convertView);
 

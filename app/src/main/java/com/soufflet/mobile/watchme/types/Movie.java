@@ -1,8 +1,5 @@
 package com.soufflet.mobile.watchme.types;
 
-import android.net.Uri;
-
-import java.net.URL;
 import java.util.Date;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
@@ -12,14 +9,14 @@ import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToStrin
 public class Movie {
 
     private final String title;
-    private final Uri imageUri;
+    private final String imagePath;
     private final String overview;
     private final double rating;
     private final Date releaseDate;
 
-    public Movie(String title, Uri imageUri, String overview, double rating, Date releaseDate) {
+    public Movie(String title, String imagePath, String overview, double rating, Date releaseDate) {
         this.title = title;
-        this.imageUri = imageUri;
+        this.imagePath = imagePath;
         this.overview = overview;
         this.rating = rating;
         this.releaseDate = releaseDate;
@@ -29,8 +26,8 @@ public class Movie {
         return title;
     }
 
-    public Uri getImageUri() {
-        return imageUri;
+    public String getImagePath() {
+        return imagePath;
     }
 
     public String getOverview() {

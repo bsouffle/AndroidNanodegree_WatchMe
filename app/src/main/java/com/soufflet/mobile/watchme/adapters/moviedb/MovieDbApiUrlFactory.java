@@ -16,6 +16,16 @@ public final class MovieDbApiUrlFactory {
         TOP_RATED_MOVIES
     }
 
+    public enum MovieDbImageSize {
+        WIDTH_185("w185"),
+        WIDTH_342("w342");
+
+        private String width;
+        MovieDbImageSize(String width) {
+            this.width = width;
+        }
+    }
+
     /**
      * @see https://www.themoviedb.org/
      */
@@ -28,7 +38,6 @@ public final class MovieDbApiUrlFactory {
     private static final String APPID_PARAM = "api_key";
 
     private static final String IMG_BASE_URL = "http://image.tmdb.org/t/p/";
-    private static final String IMG_SIZE = "w185";
 
     private static final Map<MovieDbApi, Uri> movieDbURIs =
             ImmutableMap.<MovieDbApi, Uri>builder()
@@ -42,9 +51,9 @@ public final class MovieDbApiUrlFactory {
         return movieDbURIs.get(api);
     }
 
-    public static Uri createMovieDbImageUriFor(String imagePath) {
+    public static Uri createMovieDbImageUriFor(String imagePath, MovieDbImageSize size) {
         return Uri.parse(IMG_BASE_URL).buildUpon()
-                .appendEncodedPath(IMG_SIZE + "/" + imagePath)
+                .appendEncodedPath(size.width + "/" + imagePath)
                 .build();
     }
 

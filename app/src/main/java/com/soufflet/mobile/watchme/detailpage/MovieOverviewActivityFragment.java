@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.MovieDbImageSize.WIDTH_342;
+import static com.soufflet.mobile.watchme.adapters.moviedb.MovieDbApiUrlFactory.createMovieDbImageUriFor;
 import static com.soufflet.mobile.watchme.types.MovieMapper.MOVIE_JSON_EXTRA;
 
 /**
@@ -44,7 +46,7 @@ public class MovieOverviewActivityFragment extends Fragment {
             TextView dateTextView = (TextView) rootView.findViewById(R.id.movie_date);
 
             Picasso.with(getContext())
-                    .load(selectedMovie.getImageUri())
+                    .load(createMovieDbImageUriFor(selectedMovie.getImagePath(), WIDTH_342))
                     .into(imageView);
 
             titleTextView.setText(selectedMovie.getTitle());

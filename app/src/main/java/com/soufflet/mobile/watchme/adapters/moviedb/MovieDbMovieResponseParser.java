@@ -38,7 +38,7 @@ public final class MovieDbMovieResponseParser {
                 movies.add(
                         new Movie(
                                 movieJson.getString(TITLE),
-                                createMovieDbImageUriFor(movieJson.getString(IMAGE_PATH)),
+                                movieJson.getString(IMAGE_PATH),
                                 movieJson.getString(OVERVIEW),
                                 movieJson.getDouble(RATING),
                                 DATE_FORMAT.parse(movieJson.getString(DATE))));

@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -123,8 +124,17 @@ public class MainActivityFragment extends Fragment {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), "Unable to fetch movies data", LENGTH_SHORT).show();
                         Log.e(LOG_TAG, "Error details: " + error.getMessage());
+
+                        final String errorMessage;
+                        if (error instanceof NoConnectionError) {
+                            errorMessage = "No internet found. Please check your connection and try again.";
+                        } else {
+                            errorMessage = "Unexpected error. We were Unable to fetch movies data.";
+                        }
+
+                        Toast.makeText(getContext(), errorMessage, LENGTH_SHORT).show();
+
                     }
                 });
 
