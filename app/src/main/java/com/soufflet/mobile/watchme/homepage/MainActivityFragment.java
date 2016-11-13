@@ -29,6 +29,9 @@ import com.soufflet.mobile.watchme.types.Movie;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static android.content.Context.MODE_PRIVATE;
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.android.volley.Request.Method.GET;
@@ -47,6 +50,7 @@ public class MainActivityFragment extends Fragment {
 
     private static final String LOG_TAG = MainActivityFragment.class.getSimpleName();
 
+    @BindView(R.id.movies_gridview) GridView gridview;
     private MovieGridAdapter imageGridAdapter;
 
     public MainActivityFragment() {
@@ -57,8 +61,7 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        GridView gridview = (GridView) rootView.findViewById(R.id.movies_gridview);
+        ButterKnife.bind(this, rootView);
 
         imageGridAdapter =
                 new MovieGridAdapter(
