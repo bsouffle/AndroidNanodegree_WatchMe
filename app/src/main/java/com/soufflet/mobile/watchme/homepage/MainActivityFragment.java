@@ -130,11 +130,10 @@ public class MainActivityFragment extends Fragment {
                         if (error instanceof NoConnectionError) {
                             errorMessage = "No internet found. Please check your connection and try again.";
                         } else {
-                            errorMessage = "Unexpected error. We were Unable to fetch movies data.";
+                            errorMessage = "Unexpected error. We were unable to fetch movies data.";
                         }
 
                         Toast.makeText(getContext(), errorMessage, LENGTH_SHORT).show();
-
                     }
                 });
 
