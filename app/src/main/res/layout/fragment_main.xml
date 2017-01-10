@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView
-    android:id="@+id/movies_gridview"
+<android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:numColumns="3"
-    android:background="@color/colorBackgroundDark"
-    tools:context="com.soufflet.mobile.watchme.homepage.MainActivityFragment"/>
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/movies_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:gravity="center"
+        android:background="@color/colorBackgroundDark"/>
+
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -57,6 +57,20 @@ public final class MovieDbApiUrlFactory {
                 .build();
     }
 
+    public static Uri createTrailersEndpoint(long movieId) {
+        return Uri.parse(API_BASE_URL).buildUpon()
+                .appendEncodedPath(MOVIE_API + "/" + movieId + "/videos")
+                .appendQueryParameter(APPID_PARAM, API_KEY)
+                .build();
+    }
+
+    public static Uri createReviewsEndpoint(long movieId) {
+        return Uri.parse(API_BASE_URL).buildUpon()
+                .appendEncodedPath(MOVIE_API + "/" + movieId + "/reviews")
+                .appendQueryParameter(APPID_PARAM, API_KEY)
+                .build();
+    }
+
     private static Uri createPopularMoviesEndpoint() {
         return Uri.parse(API_BASE_URL).buildUpon()
                 .appendEncodedPath(MOVIE_API + "/" + POPULAR_MOVIES_PATH)

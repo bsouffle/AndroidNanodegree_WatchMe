@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 
 import com.soufflet.mobile.watchme.R;
 
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,5 +16,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (getResources().getBoolean(R.bool.is_tablet)) {
+            setRequestedOrientation(SCREEN_ORIENTATION_LANDSCAPE);
+        }
     }
 }

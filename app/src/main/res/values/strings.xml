@@ -4,5 +4,9 @@
     <string name="sort_setting">Sort by ...</string>
     <string name="sort_by_ratings">User rating</string>
     <string name="sort_by_popularity">Popularity</string>
+    <string name="sort_by_favorites">Favorites</string>
     <string name="saved_sort_pref">saved_sort_pref</string>
+    <string name="detail_overview">Overview</string>
+    <string name="detail_trailer">Trailers</string>
+    <string name="detail_reviews">Reviews</string>
 </resources>

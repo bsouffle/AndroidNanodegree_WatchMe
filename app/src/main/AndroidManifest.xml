@@ -25,7 +25,11 @@
             android:name=".detailpage.MovieOverviewActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <provider
+            android:authorities="com.soufflet.mobile.watchme"
+            android:name=".dao.InternalMoviesProvider" />
     </application>
 
 </manifest>

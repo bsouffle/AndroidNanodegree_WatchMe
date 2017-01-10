@@ -5,7 +5,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="275dp"
+        android:layout_height="260dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
@@ -16,72 +16,117 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/movie_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/movie_title"
         android:textSize="18sp"
         android:textColor="@android:color/white" />
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/movie_overview_layout"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/movie_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:id="@+id/movie_description"
-        android:textSize="14sp"
-        android:textColor="@android:color/white" />
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/movie_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/movie_rating_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:text="Rating: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="12sp"
+                android:textColor="@color/grayLabel" />
+
+            <TextView
+                android:id="@+id/movie_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="12sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/movie_date_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="Release date: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="12sp"
+                android:textColor="@color/grayLabel" />
+
+            <TextView
+                android:id="@+id/movie_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="12sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/movie_rating_layout"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:id="@+id/movie_trailers_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/movie_description"
+        android:layout_below="@+id/movie_overview_layout"
         android:layout_marginTop="20dp">
 
         <TextView
-            android:text="Rating: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_title"
-            android:layout_centerHorizontal="true"
-            android:textSize="12sp"
-            android:textColor="@color/grayLabel" />
+            android:text="@string/detail_trailer"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_title"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/movie_rating"
-            android:textSize="12sp"
-            android:textColor="@android:color/white" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/trailers_recycler_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/movie_date_layout"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:id="@+id/movie_reviews_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/movie_rating_layout"
-        android:layout_marginTop="5dp">
-
-        <TextView
-            android:text="Release date: "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_title"
-            android:layout_centerHorizontal="true"
-            android:textSize="12sp"
-            android:textColor="@color/grayLabel" />
+        android:layout_below="@+id/movie_trailers_layout"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_title"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/movie_date"
-            android:textSize="12sp"
-            android:textColor="@android:color/white" />
+            android:text="@string/detail_reviews"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/reviews_recycler_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 </RelativeLayout>

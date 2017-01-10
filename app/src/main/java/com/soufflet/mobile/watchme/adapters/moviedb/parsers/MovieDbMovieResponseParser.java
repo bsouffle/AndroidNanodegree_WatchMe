@@ -1,4 +1,4 @@
-package com.soufflet.mobile.watchme.adapters.moviedb;
+package com.soufflet.mobile.watchme.adapters.moviedb.parsers;
 
 import android.util.Log;
 
@@ -16,6 +16,7 @@ public final class MovieDbMovieResponseParser {
     private static final String LOG_TAG = MovieDbMovieResponseParser.class.getSimpleName();
 
     private static final String RESULTS = "results";
+    private static final String ID = "id";
     private static final String TITLE = "title";
     private static final String IMAGE_PATH = "poster_path";
     private static final String OVERVIEW = "overview";
@@ -25,7 +26,7 @@ public final class MovieDbMovieResponseParser {
 
     private MovieDbMovieResponseParser() {}
 
-    public static ImmutableList<Movie> parseMovieDbResponse(JSONObject jsonObject) {
+    public static ImmutableList<Movie> parsePopularMovies(JSONObject jsonObject) {
         try {
             ImmutableList.Builder<Movie> movies = ImmutableList.builder();
             JSONArray moviesJsonArray = jsonObject.getJSONArray(RESULTS);
@@ -34,7 +35,8 @@ public final class MovieDbMovieResponseParser {
                 JSONObject movieJson = moviesJsonArray.getJSONObject(i);
 
                 movies.add(
-                        new Movie(
+                        Movie.create(
+                                movieJson.getLong(ID),
                                 movieJson.getString(TITLE),
                                 movieJson.getString(IMAGE_PATH),
                                 movieJson.getString(OVERVIEW),

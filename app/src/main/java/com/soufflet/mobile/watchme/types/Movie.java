@@ -1,66 +1,31 @@
 package com.soufflet.mobile.watchme.types;
 
-import org.parceler.Parcel;
+import android.os.Parcelable;
+
+import com.google.auto.value.AutoValue;
 
 import java.util.Date;
 
-import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
-import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
-import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
-
-@Parcel
-public class Movie {
+@AutoValue
+public abstract class Movie implements Parcelable {
 
     public static final String MOVIE_EXTRA_PARCEL = "movie_parcel";
 
-    private String title;
-    private String imagePath;
-    private String overview;
-    private double rating;
-    private Date releaseDate;
-
-    public Movie() {}
-
-    public Movie(String title, String imagePath, String overview, double rating, Date releaseDate) {
-        this.title = title;
-        this.imagePath = imagePath;
-        this.overview = overview;
-        this.rating = rating;
-        this.releaseDate = releaseDate;
+    public enum MovieDataSources {
+        THE_MOVIE_DB_POPULAR_MOVIES,
+        THE_MOVIE_DB_TOP_RATED_MOVIES,
+        INTERNAL_MOVIE_STORE_FAVORITES
     }
 
-    public String getTitle() {
-        return title;
+    public static Movie create(
+            long id, String title, String imagePath, String overview, double rating, Date releaseDate) {
+        return new AutoValue_Movie(id, title, imagePath, overview, rating, releaseDate);
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    @Override
-    public String toString() {
-        return reflectionToString(this);
-    }
-
-    @Override
-    public int hashCode() {
-        return reflectionHashCode(this);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return reflectionEquals(this, obj);
-    }
+    public abstract long id();
+    public abstract String title();
+    public abstract String imagePath();
+    public abstract String overview();
+    public abstract double rating();
+    public abstract Date releaseDate();
 }
