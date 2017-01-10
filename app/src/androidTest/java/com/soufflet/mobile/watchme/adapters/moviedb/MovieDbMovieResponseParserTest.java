@@ -35,10 +35,9 @@ public class MovieDbMovieResponseParserTest {
     }
 
     private String getFileAsString(String fileName) throws IOException {
-
         return CharStreams.toString(
                 new InputStreamReader(
-                        getInstrumentation().getContext().getAssets().open(TEST_FILE_NAME),
+                        getInstrumentation().getContext().getAssets().open(fileName),
                         UTF_8));
     }
 

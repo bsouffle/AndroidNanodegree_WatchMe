@@ -9,7 +9,7 @@ import ckm.simple.sql_provider.annotation.SimpleSQLConfig;
         authority = "com.soufflet.mobile.watchme",
         database = "watchme.db",
         version = 1)
-public class InternalMoviesProviderConfig implements ProviderConfig {
+class InternalMoviesProviderConfig implements ProviderConfig {
 
     @Override
     public UpgradeScript[] getUpdateScripts() {

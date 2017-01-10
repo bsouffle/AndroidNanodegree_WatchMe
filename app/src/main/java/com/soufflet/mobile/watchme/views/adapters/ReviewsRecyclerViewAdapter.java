@@ -1,6 +1,5 @@
 package com.soufflet.mobile.watchme.views.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +17,9 @@ import butterknife.ButterKnife;
 public class ReviewsRecyclerViewAdapter
         extends RecyclerView.Adapter<ReviewsRecyclerViewAdapter.ReviewViewHolder> {
 
-    private final Context context;
     private final List<Review> reviews;
 
-    public ReviewsRecyclerViewAdapter(Context context, List<Review> reviews) {
-        this.context = context;
+    public ReviewsRecyclerViewAdapter(List<Review> reviews) {
         this.reviews = reviews;
     }
 

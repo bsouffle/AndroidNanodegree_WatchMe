@@ -37,7 +37,7 @@ import static com.soufflet.mobile.watchme.types.Movie.MOVIE_EXTRA_PARCEL;
 public class MoviesRecyclerViewAdapter
         extends RecyclerView.Adapter<MoviesRecyclerViewAdapter.MovieViewHolder> {
 
-    private FragmentManager supportFragmentManager;
+    private final FragmentManager supportFragmentManager;
     private final List<Movie> movies;
     private final Context context;
     private final Activity activity;
@@ -107,8 +107,9 @@ public class MoviesRecyclerViewAdapter
                 null,
                 null);
 
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             viewHolder.savedAsFavorite();
+            cursor.close();
         } else {
             viewHolder.unsavedAsFavorite();
         }

@@ -28,13 +28,13 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.text.format.DateFormat.getDateFormat;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.android.volley.Request.Method.GET;
@@ -59,7 +59,6 @@ public class MovieOverviewFragment extends Fragment {
     @BindView(R.id.trailers_recycler_view) RecyclerView trailersRecyclerView;
     @BindView(R.id.reviews_recycler_view) RecyclerView reviewsRecyclerView;
 
-    private final DateFormat dateFormat = new SimpleDateFormat("MM/yyyy");
     private final List<Review> reviews = newArrayList();
     private final List<YoutubeTrailer> trailers = newArrayList();
 
@@ -72,7 +71,7 @@ public class MovieOverviewFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_movie_overview, container, false);
         ButterKnife.bind(this, rootView);
 
-        reviewsRecyclerViewAdapter = new ReviewsRecyclerViewAdapter(getContext(), reviews);
+        reviewsRecyclerViewAdapter = new ReviewsRecyclerViewAdapter(reviews);
         reviewsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         reviewsRecyclerView.setAdapter(reviewsRecyclerViewAdapter);
 
@@ -88,8 +87,8 @@ public class MovieOverviewFragment extends Fragment {
 
             titleView.setText(selectedMovie.title());
             descriptionView.setText(selectedMovie.overview());
-            ratingView.setText(Double.toString(selectedMovie.rating()));
-            dateView.setText(dateFormat.format(selectedMovie.releaseDate()));
+            ratingView.setText(NumberFormat.getInstance().format(selectedMovie.rating()));
+            dateView.setText(getDateFormat(getContext()).format(selectedMovie.releaseDate()));
 
             fetchAndDisplayReviewData(selectedMovie.id());
             fetchAndDisplayTrailerData(selectedMovie.id());

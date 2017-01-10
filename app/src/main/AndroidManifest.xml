@@ -29,7 +29,8 @@
         </activity>
         <provider
             android:authorities="com.soufflet.mobile.watchme"
-            android:name=".dao.InternalMoviesProvider" />
+            android:name=".dao.InternalMoviesProvider"
+            android:exported="false" />
     </application>
 
 </manifest>
